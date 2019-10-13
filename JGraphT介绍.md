@@ -131,7 +131,46 @@ public interface GraphGenerator<V, E, T> {
 
 ## 图遍历
 
+![](https://raw.githubusercontent.com/i2life/imageBed/master/traverse.JPG)
 
+```java
+//深度优先遍历
+    DepthFirstIterator iter = new DepthFirstIterator<>(teacherGraph);
+
+    while (iter.hasNext()) {
+      Teacher x = (Teacher)iter.next();
+
+      System.out.println(x.toString());
+    }
+```
+
+## 图算法
+
+![](https://raw.githubusercontent.com/i2life/imageBed/master/algorithm.JPG)
+
+![](https://raw.githubusercontent.com/i2life/imageBed/master/shortest.JPG)
+
+## 图的导入导出
+```java
+GraphMLImporter<CustomVertex, DefaultWeightedEdge> importer =
+            new GraphMLImporter<>(vertexProvider, edgeProvider);
+            
+GraphMLExporter<CustomVertex,
+            DefaultWeightedEdge> exporter = new GraphMLExporter<>(vertexIdProvider, vertexLabelProvider, vertexAttributeProvider, edgeIdProvider,edgeLabelProvider, edgeAttributeProvider);
+```
+
+## 图的可视化
+使用JGraphX适配器对图进行可视化：
+
+```java
+ListenableGraph<String, DefaultEdge> g =
+            new DefaultListenableGraph<>(new DefaultDirectedGraph<>(DefaultEdge.class));
+
+        // create a visualization using JGraph, via an adapter
+        jgxAdapter = new JGraphXAdapter<>(g);
+```
+
+![](https://raw.githubusercontent.com/i2life/imageBed/master/visualization.JPG)
 
 
 
